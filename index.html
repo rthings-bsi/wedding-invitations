@@ -708,13 +708,13 @@
   </script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const nama = urlParams.get('n') || '';
-    const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
+    const nama = (urlParams.get('n') || '').trim();
+    const pronoun = (urlParams.get('p') || '').trim();
     const namaContainer = document.querySelector('.hero .guest-name');
-    const tamuText = `${pronoun} ${nama}`.trim();
-    if (nama || urlParams.get('p')) {
-      namaContainer.innerText = tamuText;
-    }
+    const tamuText = nama
+      ? (pronoun ? `${pronoun} ${nama}` : nama)
+      : (pronoun || 'Tamu Undangan');
+    namaContainer.innerText = tamuText;
 
     document.querySelector('#nama').value = nama;
   </script>

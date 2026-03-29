@@ -102,23 +102,7 @@ h5 {
 }
 
 .hero main::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 53%;
-  width: min(700px, 92vw);
-  height: min(320px, 46vh);
-  transform: translate(-50%, -50%);
-  background:
-    radial-gradient(ellipse at center,
-      rgba(245, 239, 230, 0.22) 0%,
-      rgba(245, 239, 230, 0.13) 36%,
-      rgba(245, 239, 230, 0.04) 62%,
-      rgba(245, 239, 230, 0) 100%);
-  filter: blur(1px);
-  border-radius: 999px;
-  z-index: -1;
-  pointer-events: none;
+  content: none;
 }
 
 .hero main>* {
@@ -276,22 +260,27 @@ h5 {
   font-size: clamp(3.3rem, 11vw, 9.2rem);
   margin-top: 0.2rem;
   margin-bottom: 0.25rem;
-  color: #d0b07b;
+  color: #e5c391;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 0.95;
-  background: linear-gradient(180deg, #f6ead2 0%, #cfb07c 48%, #ad8b5a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.55px rgba(245, 239, 230, 0.24);
   text-shadow:
     0 2px 8px rgba(35, 27, 22, 0.3),
     0 8px 28px rgba(35, 27, 22, 0.24),
     0 0 20px rgba(245, 239, 230, 0.18);
   filter: drop-shadow(0 4px 16px rgba(42, 31, 24, 0.26));
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero h1 {
+    background: linear-gradient(180deg, #f6ead2 0%, #cfb07c 48%, #ad8b5a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .hero h4 {
@@ -377,7 +366,22 @@ h5 {
   .hero h1 {
     font-size: clamp(3.5rem, 16vw, 6rem);
     margin-top: 0.5rem;
-    -webkit-text-stroke: 0.42px rgba(245, 239, 230, 0.2);
+    color: #f0cf9f;
+    -webkit-text-stroke: 0.62px rgba(255, 246, 229, 0.35);
+    text-shadow:
+      0 2px 10px rgba(27, 20, 16, 0.56),
+      0 10px 24px rgba(27, 20, 16, 0.42),
+      0 0 18px rgba(255, 238, 214, 0.18);
+    filter: drop-shadow(0 6px 14px rgba(22, 15, 11, 0.4));
+  }
+
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .hero h1 {
+      background: linear-gradient(180deg, #fff6e5 0%, #ebd0a0 52%, #c49b63 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   .hero h4 {
@@ -517,15 +521,11 @@ h5 {
 }
 
 .opening-inner::before {
-  left: 8px;
-  border-right: 0;
-  transform: rotate(-6deg);
+  content: none;
 }
 
 .opening-inner::after {
-  right: 8px;
-  border-left: 0;
-  transform: scaleX(-1) rotate(-6deg);
+  content: none;
 }
 
 .opening-page::before {
@@ -564,17 +564,7 @@ h5 {
 }
 
 .opening-portrait-frame::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -16px;
-  transform: translateX(-50%);
-  width: 116px;
-  height: 26px;
-  background: linear-gradient(180deg, #8a756d 0%, #6d5b55 100%);
-  border: 2px solid rgba(232, 216, 196, 0.8);
-  border-radius: 60px 60px 18px 18px;
-  box-shadow: 0 4px 8px rgba(79, 67, 56, 0.2);
+  content: none;
 }
 
 .opening-portrait-frame::after {
@@ -696,15 +686,20 @@ h5 {
   font-weight: 700;
   font-style: italic;
   letter-spacing: 0.5px;
-  color: #cfb07c;
-  background: linear-gradient(180deg, #f7ecd6 0%, #cfb07c 48%, #ad8b5a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #e4c08a;
   text-transform: none;
   opacity: 0;
   transform: scale(0.95);
   animation: opening-name-bounce 1s cubic-bezier(0.2, 0.9, 0.3, 1.15) 1.45s forwards;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .opening-name {
+    background: linear-gradient(180deg, #f7ecd6 0%, #cfb07c 48%, #ad8b5a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .opening-date {
@@ -2393,6 +2388,30 @@ footer li a:hover {
     font-size: 80%;
   }
 
+  .story,
+  .gallery,
+  .gifts {
+    background-color: #fff9f1;
+    background-image: linear-gradient(180deg, rgba(255, 250, 242, 0.98) 0%, rgba(248, 239, 227, 0.96) 100%);
+  }
+
+  .story p,
+  .gallery p,
+  .gifts p {
+    color: #5f4f40;
+  }
+
+  .timeline li .timeline-panel {
+    background-color: rgba(255, 252, 247, 0.98);
+    border-color: rgba(198, 169, 105, 0.24);
+    box-shadow: 0 10px 24px rgba(107, 91, 77, 0.14);
+  }
+
+  .gifts .list-group-item {
+    background-color: rgba(255, 252, 247, 0.9);
+    border-bottom-color: rgba(198, 169, 105, 0.22);
+  }
+
   .opening-flower {
     opacity: 0.72;
   }
@@ -2448,6 +2467,20 @@ footer li a:hover {
   .opening-name {
     font-size: clamp(2rem, 10vw, 2.8rem);
     letter-spacing: 0.2px;
+    color: #edcca0;
+    -webkit-text-stroke: 0.48px rgba(255, 245, 226, 0.3);
+    text-shadow:
+      0 2px 8px rgba(28, 20, 15, 0.45),
+      0 8px 20px rgba(28, 20, 15, 0.35);
+  }
+
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .opening-name {
+      background: linear-gradient(180deg, #fff4de 0%, #f1d2a1 50%, #c89f69 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   .opening-date {
@@ -2503,6 +2536,35 @@ footer li a:hover {
       radial-gradient(circle at 0 50%, rgba(198, 169, 105, 0.86) 0 2px, transparent 2.6px),
       radial-gradient(circle at 84% 16%, rgba(232, 216, 196, 0.9) 0 1.9px, transparent 2.5px),
       radial-gradient(circle at 16% 84%, rgba(232, 216, 196, 0.9) 0 1.9px, transparent 2.5px);
+  }
+
+  .home {
+    background-image:
+      linear-gradient(rgba(250, 242, 231, 0.78), rgba(250, 242, 231, 0.78)),
+      url("img/Tasya&Andi-32.jpg");
+  }
+
+  .couple-card {
+    background: linear-gradient(180deg, rgba(255, 248, 238, 0.98) 0%, rgba(241, 225, 201, 0.98) 100%);
+    border: 1px solid rgba(176, 140, 86, 0.3);
+    box-shadow: 0 14px 30px rgba(135, 103, 58, 0.26);
+  }
+
+  .home .couple-card h3 {
+    color: #b48855;
+  }
+
+  .home .couple-card p {
+    color: #5e4d3d;
+  }
+
+  .couple-parents {
+    color: #7d6549 !important;
+    border-top: 1px solid rgba(176, 140, 86, 0.34);
+  }
+
+  .couple-parents strong {
+    color: #6b553f;
   }
 
   .mynavbar .navbar-brand,
